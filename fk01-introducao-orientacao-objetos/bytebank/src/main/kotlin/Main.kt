@@ -1,24 +1,45 @@
 fun main() {
     println("Bem-vindo(a) ao ByteBank!\n")
 
-//    val contaFulano = Conta()
-//    contaFulano.titular = "Fulano de Tal"
-//    contaFulano.numeroConta = "1000"
-//    contaFulano.saldo = 250.49
-//
-//    val contaBeltrano = Conta()
-//    contaBeltrano.titular = "Beltrano da Silva"
-//    contaBeltrano.numeroConta = "1001"
-//    contaBeltrano.saldo = -159.0
-//
-//    println("Titular: ${contaFulano.titular}")
-//    println("Agência: ${contaFulano.agencia} | Número da conta: ${contaFulano.numeroConta}")
-//    println("Saldo: R$ %.2f\n".format(contaFulano.saldo))
-//
-//    println("Titular: ${contaBeltrano.titular}")
-//    println("Agência: ${contaBeltrano.agencia} | Número da conta: ${contaBeltrano.numeroConta}")
-//    println("Saldo: R$ %.2f\n".format(contaBeltrano.saldo))
+    val contaFulano = Conta()
+    contaFulano.titular = "Fulano de Tal"
+    contaFulano.numeroConta = "1000"
+    contaFulano.saldo = 250.49
 
+    val contaBeltrano = Conta()
+    contaBeltrano.titular = "Beltrano da Silva"
+    contaBeltrano.numeroConta = "1001"
+    contaBeltrano.saldo = -159.0
+
+    println("Titular: ${contaFulano.titular}")
+    println("Agência: ${contaFulano.agencia} | Número da conta: ${contaFulano.numeroConta}")
+    println("Saldo: R$ %.2f\n".format(contaFulano.saldo))
+
+    println("Titular: ${contaBeltrano.titular}")
+    println("Agência: ${contaBeltrano.agencia} | Número da conta: ${contaBeltrano.numeroConta}")
+    println("Saldo: R$ %.2f\n".format(contaBeltrano.saldo))
+
+    println("Depositando R$ 100,00 na conta de ${contaFulano.titular}")
+    depositar(100.0, contaFulano)
+    println("Saldo: R$ %.2f\n".format(contaFulano.saldo))
+
+    println("Depositando R$ 300,00 na conta de ${contaBeltrano.titular}")
+    depositar(300.0, contaBeltrano)
+    println("Saldo: R$ %.2f\n".format(contaBeltrano.saldo))
+}
+
+class Conta {
+    var titular = ""
+    val agencia = "0017"
+    var numeroConta = ""
+    var saldo = 0.0
+}
+
+fun depositar(valor: Double, conta: Conta) {
+    conta.saldo += valor
+}
+
+fun testaCopiasEReferencias() {
     val x = 10
     var y = x
     y++
@@ -35,13 +56,6 @@ fun main() {
 
     println(contaFulano)
     println(contaBeltrano)
-}
-
-class Conta {
-    var titular = ""
-    val agencia = "0017"
-    var numeroConta = ""
-    var saldo = 0.0
 }
 
 fun testaLacos() {
