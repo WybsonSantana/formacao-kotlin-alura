@@ -1,23 +1,40 @@
 fun main() {
     println("Bem-vindo(a) ao ByteBank!\n")
 
+//    val contaFulano = Conta()
+//    contaFulano.titular = "Fulano de Tal"
+//    contaFulano.numeroConta = "1000"
+//    contaFulano.saldo = 250.49
+//
+//    val contaBeltrano = Conta()
+//    contaBeltrano.titular = "Beltrano da Silva"
+//    contaBeltrano.numeroConta = "1001"
+//    contaBeltrano.saldo = -159.0
+//
+//    println("Titular: ${contaFulano.titular}")
+//    println("Agência: ${contaFulano.agencia} | Número da conta: ${contaFulano.numeroConta}")
+//    println("Saldo: R$ %.2f\n".format(contaFulano.saldo))
+//
+//    println("Titular: ${contaBeltrano.titular}")
+//    println("Agência: ${contaBeltrano.agencia} | Número da conta: ${contaBeltrano.numeroConta}")
+//    println("Saldo: R$ %.2f\n".format(contaBeltrano.saldo))
+
+    val x = 10
+    var y = x
+    y++
+    println("X = $x\nY = $y")
+
     val contaFulano = Conta()
     contaFulano.titular = "Fulano de Tal"
-    contaFulano.numeroConta = "1000"
-    contaFulano.saldo = 250.49
-
     val contaBeltrano = Conta()
     contaBeltrano.titular = "Beltrano da Silva"
-    contaBeltrano.numeroConta = "1001"
-    contaBeltrano.saldo = -159.0
+    contaFulano.titular = "Fulano de Tal"
 
-    println("Titular: ${contaFulano.titular}")
-    println("Agência: ${contaFulano.agencia} | Número da conta: ${contaFulano.numeroConta}")
-    println("Saldo: R$ %.2f\n".format(contaFulano.saldo))
+    println("Titular da conta Fulano: ${contaFulano.titular}")
+    println("Titular da conta Beltrano: ${contaBeltrano.titular}")
 
-    println("Titular: ${contaBeltrano.titular}")
-    println("Agência: ${contaBeltrano.agencia} | Número da conta: ${contaBeltrano.numeroConta}")
-    println("Saldo: R$ %.2f\n".format(contaBeltrano.saldo))
+    println(contaFulano)
+    println(contaBeltrano)
 }
 
 class Conta {
