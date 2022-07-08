@@ -1,3 +1,6 @@
+import java.text.SimpleDateFormat
+import java.util.*
+
 fun main() {
     println("Bem-vindo(a) ao ByteBank!\n")
 
@@ -19,13 +22,11 @@ fun main() {
     println("Agência: ${contaBeltrano.agencia} | Número da conta: ${contaBeltrano.numeroConta}")
     println("Saldo: R$ %.2f\n".format(contaBeltrano.saldo))
 
-    println("Depositando R$ 100,00 na conta de ${contaFulano.titular}")
-    depositar(100.0, contaFulano)
-    println("Saldo: R$ %.2f\n".format(contaFulano.saldo))
+    contaFulano.depositar(-250.0)
+    contaBeltrano.depositar(400.0)
 
-    println("Depositando R$ 300,00 na conta de ${contaBeltrano.titular}")
-    depositar(300.0, contaBeltrano)
-    println("Saldo: R$ %.2f\n".format(contaBeltrano.saldo))
+    contaFulano.sacar(100.0)
+    contaBeltrano.sacar(500.0)
 }
 
 class Conta {
@@ -33,10 +34,39 @@ class Conta {
     val agencia = "0017"
     var numeroConta = ""
     var saldo = 0.0
-}
+    val horarioTransacao = SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(Date())
 
-fun depositar(valor: Double, conta: Conta) {
-    conta.saldo += valor
+    fun depositar(valor: Double) {
+        if (valor > 0) {
+            this.saldo += valor
+            println("Depositando R$ %.2f na conta de ${this.titular}".format(valor))
+            println("Depósito realizado com sucesso!")
+            println("Titular: ${this.titular}")
+            println("Agência: ${this.agencia} | Número da conta: ${this.numeroConta}")
+            println("Valor depositado: R$ %.2f".format(valor))
+            println("Horário do depósito: ${this.horarioTransacao}")
+            println("Saldo: R$ %.2f\n".format(this.saldo))
+        } else {
+            println("Depositando R$ %.2f na conta de ${this.titular}".format(valor))
+            println("Desculpe! Algo deu errado e não conseguimos processar o seu depósito.\n")
+        }
+    }
+
+    fun sacar(valor: Double) {
+        if (valor <= saldo) {
+            this.saldo -= valor
+            println("Sacando R$ %.2f na conta de ${this.titular}".format(valor))
+            println("Saque realizado com sucesso!")
+            println("Titular: ${this.titular}")
+            println("Agência: ${this.agencia} | Número da conta: ${this.numeroConta}")
+            println("Valor sacado: R$ %.2f".format(valor))
+            println("Horário do saque: ${this.horarioTransacao}")
+            println("Saldo: R$ %.2f\n".format(this.saldo))
+        } else {
+            println("Sacando R$ %.2f na conta de ${this.titular}".format(valor))
+            println("Saldo insuficiente!\n")
+        }
+    }
 }
 
 fun testaCopiasEReferencias() {
