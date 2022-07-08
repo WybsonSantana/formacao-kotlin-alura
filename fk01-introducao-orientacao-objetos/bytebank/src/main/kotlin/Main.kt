@@ -27,6 +27,9 @@ fun main() {
 
     contaFulano.sacar(100.0)
     contaBeltrano.sacar(500.0)
+
+    contaFulano.transferir(50.0, contaBeltrano)
+    contaBeltrano.transferir(450.0, contaFulano)
 }
 
 class Conta {
@@ -65,6 +68,23 @@ class Conta {
         } else {
             println("Sacando R$ %.2f na conta de ${this.titular}".format(valor))
             println("Saldo insuficiente!\n")
+        }
+    }
+
+    fun transferir(valor: Double, destino: Conta) {
+        if (valor <= saldo) {
+            this.saldo -= valor
+            destino.saldo += valor
+            println("Transferindo %.2f da conta de ${this.titular} para ${destino.titular}".format(valor))
+            println("Transferência realizada com sucesso!")
+            println("Titular: ${this.titular}")
+            println("Agência: ${this.agencia} | Número da conta: ${this.numeroConta}")
+            println("Valor transferido: R$ %.2f".format(valor))
+            println("Horário da transferência: ${this.horarioTransacao}")
+            println("Saldo: R$ %.2f\n".format(this.saldo))
+        } else {
+            println("Transferindo %.2f da conta de ${this.titular} para ${destino.titular}".format(valor))
+            println("Falha na transferência!\n")
         }
     }
 }
