@@ -1,9 +1,10 @@
-class Gerente(
+class Diretor(
     nome: String,
     cargo: String,
     cpf: String,
     email: String,
     salario: Double,
+    val plr: Double = salario * 1.5,
     val senha: Int
 ) : Funcionario(
     nome = nome,
@@ -13,8 +14,9 @@ class Gerente(
     salario = salario
 ) {
 
+
 //    fun bonificacao(): Double {
-//        return this.salario * 0.2
+//        return this.salario * 0.3
 //    }
 
     fun autenticar(senha: Int) {
@@ -24,4 +26,5 @@ class Gerente(
             println("Falha na autenticação!")
         }
     }
+
 }
