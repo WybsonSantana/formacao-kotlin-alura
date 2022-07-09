@@ -7,28 +7,20 @@ fun main() {
     val contaFulano = Conta()
     contaFulano.titular = "Fulano de Tal"
     contaFulano.numeroConta = "1000"
-    contaFulano.saldo = 250.49
+    contaFulano.depositar(300.0)
 
     val contaBeltrano = Conta()
     contaBeltrano.titular = "Beltrano da Silva"
     contaBeltrano.numeroConta = "1001"
-    contaBeltrano.saldo = -159.0
-
-    println("Titular: ${contaFulano.titular}")
-    println("Agência: ${contaFulano.agencia} | Número da conta: ${contaFulano.numeroConta}")
-    println("Saldo: R$ %.2f\n".format(contaFulano.saldo))
-
-    println("Titular: ${contaBeltrano.titular}")
-    println("Agência: ${contaBeltrano.agencia} | Número da conta: ${contaBeltrano.numeroConta}")
-    println("Saldo: R$ %.2f\n".format(contaBeltrano.saldo))
+    contaBeltrano.depositar(200.0)
 
     contaFulano.depositar(-250.0)
     contaBeltrano.depositar(400.0)
 
-    contaFulano.sacar(100.0)
-    contaBeltrano.sacar(500.0)
+    contaFulano.sacar(300.0)
+    contaBeltrano.sacar(700.0)
 
-    contaFulano.transferir(50.0, contaBeltrano)
+    contaFulano.transferir(150.0, contaBeltrano)
     contaBeltrano.transferir(450.0, contaFulano)
 }
 
@@ -37,6 +29,7 @@ class Conta {
     val agencia = "0017"
     var numeroConta = ""
     var saldo = 0.0
+        private set
     val horarioTransacao = SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(Date())
 
     fun depositar(valor: Double) {
@@ -74,7 +67,7 @@ class Conta {
     fun transferir(valor: Double, destino: Conta) {
         if (valor <= saldo) {
             this.saldo -= valor
-            destino.saldo += valor
+            receberTransferencia(valor, destino)
             println("Transferindo %.2f da conta de ${this.titular} para ${destino.titular}".format(valor))
             println("Transferência realizada com sucesso!")
             println("Titular: ${this.titular}")
@@ -86,6 +79,10 @@ class Conta {
             println("Transferindo %.2f da conta de ${this.titular} para ${destino.titular}".format(valor))
             println("Falha na transferência!\n")
         }
+    }
+
+    fun receberTransferencia(valor: Double, favorecido: Conta) {
+        favorecido.saldo += valor
     }
 }
 
