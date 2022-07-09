@@ -48,6 +48,5 @@ fun main() {
     println("E-mail: ${diretorCiclano.email}")
     println("Salário: R$ %.2f".format(diretorCiclano.salario))
     println("Bonificação: R$ %.2f".format(diretorCiclano.bonificacao()))
-    println("PLR: R$ %.2f".format(diretorCiclano.plr))
     diretorCiclano.autenticar(3264)
 }
