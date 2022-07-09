@@ -5,16 +5,14 @@ fun main() {
     println("Bem-vindo(a) ao ByteBank!\n")
 
     val contaFulano = Conta(
-        "Fulano de Tal",
-        "0017",
-        "1000"
+        titular = "Fulano de Tal",
+        numeroConta = "1000"
     )
     contaFulano.depositar(300.0)
 
     val contaBeltrano = Conta(
-        "Beltrano da Silva",
-        "0017",
-        "1001"
+        titular = "Beltrano da Silva",
+        numeroConta = "1001"
     )
     contaBeltrano.depositar(200.0)
 
@@ -29,9 +27,9 @@ fun main() {
 }
 
 class Conta(
-    var titular: String,
+    val titular: String,
     val agencia: String = "0017",
-    var numeroConta: String
+    val numeroConta: String
 ) {
 
     var saldo = 0.0
@@ -99,14 +97,12 @@ fun testaCopiasEReferencias() {
     println("X = $x\nY = $y")
 
     val contaFulano = Conta(
-        "Fulano de Tal",
-        "0017",
-        "1000"
+        titular = "Fulano de Tal",
+        numeroConta = "1000"
     )
     val contaBeltrano = Conta(
-        "Beltrano da Silva",
-        "0017",
-        "1001"
+        titular = "Beltrano da Silva",
+        numeroConta = "1001"
     )
 
     println("Titular da conta Fulano: ${contaFulano.titular}")
