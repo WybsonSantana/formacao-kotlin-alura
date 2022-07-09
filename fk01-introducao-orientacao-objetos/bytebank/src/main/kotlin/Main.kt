@@ -4,14 +4,18 @@ import java.util.*
 fun main() {
     println("Bem-vindo(a) ao ByteBank!\n")
 
-    val contaFulano = Conta()
-    contaFulano.titular = "Fulano de Tal"
-    contaFulano.numeroConta = "1000"
+    val contaFulano = Conta(
+        "Fulano de Tal",
+        "0017",
+        "1000"
+    )
     contaFulano.depositar(300.0)
 
-    val contaBeltrano = Conta()
-    contaBeltrano.titular = "Beltrano da Silva"
-    contaBeltrano.numeroConta = "1001"
+    val contaBeltrano = Conta(
+        "Beltrano da Silva",
+        "0017",
+        "1001"
+    )
     contaBeltrano.depositar(200.0)
 
     contaFulano.depositar(-250.0)
@@ -24,10 +28,12 @@ fun main() {
     contaBeltrano.transferir(450.0, contaFulano)
 }
 
-class Conta {
-    var titular = ""
-    val agencia = "0017"
-    var numeroConta = ""
+class Conta(
+    var titular: String,
+    val agencia: String = "0017",
+    var numeroConta: String
+) {
+
     var saldo = 0.0
         private set
     val horarioTransacao = SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(Date())
@@ -92,11 +98,16 @@ fun testaCopiasEReferencias() {
     y++
     println("X = $x\nY = $y")
 
-    val contaFulano = Conta()
-    contaFulano.titular = "Fulano de Tal"
-    val contaBeltrano = Conta()
-    contaBeltrano.titular = "Beltrano da Silva"
-    contaFulano.titular = "Fulano de Tal"
+    val contaFulano = Conta(
+        "Fulano de Tal",
+        "0017",
+        "1000"
+    )
+    val contaBeltrano = Conta(
+        "Beltrano da Silva",
+        "0017",
+        "1001"
+    )
 
     println("Titular da conta Fulano: ${contaFulano.titular}")
     println("Titular da conta Beltrano: ${contaBeltrano.titular}")
