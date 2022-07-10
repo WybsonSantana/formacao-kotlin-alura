@@ -49,4 +49,10 @@ fun main() {
     println("Salário: R$ %.2f".format(diretorCiclano.salario))
     println("Bonificação: R$ %.2f".format(diretorCiclano.bonificacao()))
     diretorCiclano.autenticar(3264)
+
+    val calculadora = CalculadoraDeBonificacao()
+    calculadora.registra(funcionarioFulano)
+    calculadora.registra(gerenteBeltrano)
+    calculadora.registra(diretorCiclano)
+    println("\nTotal pago em bonificações: R$ %.2f".format(calculadora.total))
 }
