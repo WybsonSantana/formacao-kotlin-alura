@@ -1,20 +1,20 @@
 fun testaFuncionarios() {
     println("Seja bem-vindo(a) ao ByteBank!\n")
 
-    val analistaMengano = Analista(
-        nome = "Mengano de Souza",
+    val auxiliarZotano = Auxiliar(
+        nome = "Zotano das Neves",
         cargo = "Analista",
-        cpf = "692.329.180-13",
-        email = "menganodesouza@bytebank.com.br",
-        salario = 5000.0
+        cpf = "479.116.990-54",
+        email = "zotanodasneves@bytebank.com.br",
+        salario = 2500.0
     )
 
-    println("Nome: ${analistaMengano.nome}")
-    println("Cargo: ${analistaMengano.cargo}")
-    println("CPF: ${analistaMengano.cpf}")
-    println("E-mail: ${analistaMengano.email}")
-    println("Salário: R$ %.2f".format(analistaMengano.salario))
-    println("Bonificação: R$ %.2f\n".format(analistaMengano.bonificacao()))
+    println("Nome: ${auxiliarZotano.nome}")
+    println("Cargo: ${auxiliarZotano.cargo}")
+    println("CPF: ${auxiliarZotano.cpf}")
+    println("E-mail: ${auxiliarZotano.email}")
+    println("Salário: R$ %.2f".format(auxiliarZotano.salario))
+    println("Bonificação: R$ %.2f\n".format(auxiliarZotano.bonificacao()))
 
     val analistaFulano = Analista(
         nome = "Fulano de Tal",
@@ -66,7 +66,7 @@ fun testaFuncionarios() {
     diretorCiclano.autenticar(3264)
 
     val calculadora = CalculadoraDeBonificacao()
-    calculadora.registra(analistaMengano)
+    calculadora.registra(auxiliarZotano)
     calculadora.registra(analistaFulano)
     calculadora.registra(gerenteBeltrano)
     calculadora.registra(diretorCiclano)
