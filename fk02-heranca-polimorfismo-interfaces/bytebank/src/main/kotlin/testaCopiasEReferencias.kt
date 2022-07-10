@@ -4,11 +4,11 @@ fun testaCopiasEReferencias() {
     y++
     println("X = $x\nY = $y")
 
-    val contaFulano = Conta(
+    val contaFulano = ContaPoupanca(
         titular = "Fulano de Tal",
         numeroConta = "1000"
     )
-    val contaBeltrano = Conta(
+    val contaBeltrano = ContaPoupanca(
         titular = "Beltrano da Silva",
         numeroConta = "1001"
     )

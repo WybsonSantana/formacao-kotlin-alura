@@ -3,7 +3,7 @@ fun testaFuncionarios() {
 
     val auxiliarZotano = Auxiliar(
         nome = "Zotano das Neves",
-        cargo = "Analista",
+        cargo = "Auxiliar",
         cpf = "479.116.990-54",
         email = "zotanodasneves@bytebank.com.br",
         salario = 2500.0
