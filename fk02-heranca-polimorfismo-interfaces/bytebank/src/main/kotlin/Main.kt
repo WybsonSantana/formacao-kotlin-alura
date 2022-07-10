@@ -1,7 +1,21 @@
 fun main() {
     println("Seja bem-vindo(a) ao ByteBank!\n")
 
-    val funcionarioFulano = Funcionario(
+    val funcionarioMengano = Funcionario(
+        nome = "Mengano de Souza",
+        cargo = "Atendente",
+        cpf = "692.329.180-13",
+        email = "menganodesouza@bytebank.com.br",
+        salario = 1500.0
+    )
+    println("Nome: ${funcionarioMengano.nome}")
+    println("Cargo: ${funcionarioMengano.cargo}")
+    println("CPF: ${funcionarioMengano.cpf}")
+    println("E-mail: ${funcionarioMengano.email}")
+    println("Salário: R$ %.2f".format(funcionarioMengano.salario))
+    println("Bonificação: R$ %.2f\n".format(funcionarioMengano.bonificacao()))
+
+    val analistaFulano = Analista(
         nome = "Fulano de Tal",
         cargo = "Analista",
         cpf = "123.456.789-09",
@@ -9,12 +23,12 @@ fun main() {
         salario = 5000.0
     )
 
-    println("Nome: ${funcionarioFulano.nome}")
-    println("Cargo: ${funcionarioFulano.cargo}")
-    println("CPF: ${funcionarioFulano.cpf}")
-    println("E-mail: ${funcionarioFulano.email}")
-    println("Salário: R$ %.2f".format(funcionarioFulano.salario))
-    println("Bonificação: R$ %.2f\n".format(funcionarioFulano.bonificacao()))
+    println("Nome: ${analistaFulano.nome}")
+    println("Cargo: ${analistaFulano.cargo}")
+    println("CPF: ${analistaFulano.cpf}")
+    println("E-mail: ${analistaFulano.email}")
+    println("Salário: R$ %.2f".format(analistaFulano.salario))
+    println("Bonificação: R$ %.2f\n".format(analistaFulano.bonificacao()))
 
     val gerenteBeltrano = Gerente(
         nome = "Beltrano da Silva",
@@ -51,7 +65,8 @@ fun main() {
     diretorCiclano.autenticar(3264)
 
     val calculadora = CalculadoraDeBonificacao()
-    calculadora.registra(funcionarioFulano)
+    calculadora.registra(funcionarioMengano)
+    calculadora.registra(analistaFulano)
     calculadora.registra(gerenteBeltrano)
     calculadora.registra(diretorCiclano)
     println("\nTotal pago em bonificações: R$ %.2f".format(calculadora.total))
