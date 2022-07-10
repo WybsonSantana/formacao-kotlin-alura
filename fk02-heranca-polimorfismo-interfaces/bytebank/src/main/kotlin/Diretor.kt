@@ -13,7 +13,7 @@ class Diretor(
     email = email,
     salario = salario,
     senha = senha
-), Autenticavel {
+) {
 
     override fun bonificacao(): Double {
         return this.salario * 0.1 + this.salario + this.plr

@@ -2,7 +2,7 @@ class Cliente(
     val nome: String,
     val cpf: String,
     val email: String,
-    val senha: Int
+    private val senha: Int
 ) : Autenticavel {
 
     override fun autenticar(senha: Int): Boolean {
