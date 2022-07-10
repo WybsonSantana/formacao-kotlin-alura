@@ -13,8 +13,12 @@ abstract class FuncionarioAdmin(
     salario = salario
 ) {
 
-    abstract override fun bonificacao(): Double
-
-    abstract fun autenticar(senha: Int): Boolean
+    fun autenticar(senha: Int): Boolean {
+        if (this.senha == senha) {
+            return true
+        } else {
+            return false
+        }
+    }
 
 }
