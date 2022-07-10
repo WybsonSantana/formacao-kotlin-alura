@@ -4,24 +4,25 @@ class Gerente(
     cpf: String,
     email: String,
     salario: Double,
-    val senha: Int
-) : Funcionario(
+    senha: Int
+) : FuncionarioAdmin(
     nome = nome,
     cargo = cargo,
     cpf = cpf,
     email = email,
-    salario = salario
+    salario = salario,
+    senha = senha
 ) {
 
     override fun bonificacao(): Double {
         return this.salario * 0.1 + this.salario
     }
 
-    fun autenticar(senha: Int) {
+    override fun autenticar(senha: Int): Boolean {
         if (this.senha == senha) {
-            println("Autenticação realizada com sucesso!")
+            return true
         } else {
-            println("Falha na autenticação!")
+            return false
         }
     }
 }
