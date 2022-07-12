@@ -1,7 +1,9 @@
-import modelo.Cliente
-import modelo.Diretor
-import modelo.Gerente
-import modelo.SistemaInterno
+package br.com.bytebank.teste
+
+import br.com.bytebank.modelo.Cliente
+import br.com.bytebank.modelo.Diretor
+import br.com.bytebank.modelo.Gerente
+import br.com.bytebank.modelo.SistemaInterno
 
 fun testaAutenticacao() {
     val clienteMorgano = Cliente(
@@ -13,7 +15,7 @@ fun testaAutenticacao() {
 
     val gerenteBeltrano = Gerente(
         nome = "Beltrano da Silva",
-        cargo = "modelo.Gerente",
+        cargo = "Gerente",
         cpf = "930.133.220-55",
         email = "beltranodasilva@bytebank.com.br",
         salario = 10000.0,
@@ -22,7 +24,7 @@ fun testaAutenticacao() {
 
     val diretorCiclano = Diretor(
         nome = "Ciclano do Ramo",
-        cargo = "modelo.Diretor",
+        cargo = "Diretor",
         cpf = "380.157.620-57",
         email = "ciclanodoramo@bytebank.com.br",
         salario = 20000.0,

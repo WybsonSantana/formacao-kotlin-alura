@@ -1,4 +1,4 @@
-package modelo
+package br.com.bytebank.modelo
 
 abstract class FuncionarioAdmin(
     nome: String,
@@ -16,11 +16,7 @@ abstract class FuncionarioAdmin(
 ), Autenticavel {
 
     override fun autenticar(senha: Int): Boolean {
-        if (this.senha == senha) {
-            return true
-        } else {
-            return false
-        }
+        return this.senha == senha
     }
 
 }

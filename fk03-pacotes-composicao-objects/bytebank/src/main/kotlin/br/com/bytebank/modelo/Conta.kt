@@ -1,4 +1,4 @@
-package modelo
+package br.com.bytebank.modelo
 
 import java.text.SimpleDateFormat
 import java.util.*
@@ -7,7 +7,7 @@ abstract class Conta(
     val titular: String,
     val agencia: String = "0017",
     val numeroConta: String,
-    val tipoDaConta: String = "modelo.Conta",
+    val tipoDaConta: String = "Conta",
 ) {
 
     var saldo = 0.0

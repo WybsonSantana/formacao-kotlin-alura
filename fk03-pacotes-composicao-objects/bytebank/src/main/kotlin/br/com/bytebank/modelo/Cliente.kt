@@ -1,4 +1,4 @@
-package modelo
+package br.com.bytebank.modelo
 
 class Cliente(
     val nome: String,
@@ -8,11 +8,7 @@ class Cliente(
 ) : Autenticavel {
 
     override fun autenticar(senha: Int): Boolean {
-        if (this.senha == senha) {
-            return true
-        } else {
-            return false
-        }
+        return this.senha == senha
     }
 
 }

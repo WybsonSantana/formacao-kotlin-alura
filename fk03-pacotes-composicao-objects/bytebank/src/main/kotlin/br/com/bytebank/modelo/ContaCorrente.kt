@@ -1,10 +1,10 @@
-package modelo
+package br.com.bytebank.modelo
 
 class ContaCorrente(
     titular: String,
     agencia: String = "0017",
     numeroConta: String,
-    tipoDaConta: String = "modelo.Conta Corrente",
+    tipoDaConta: String = "Conta Corrente",
 ) : Conta(
     titular = titular,
     agencia = agencia,
@@ -12,8 +12,8 @@ class ContaCorrente(
     tipoDaConta = tipoDaConta,
 ) {
 
-    val taxaSaque: Double = 0.1
-    val taxaTransferencia: Double = 1.9
+    private val taxaSaque: Double = 0.1
+    private val taxaTransferencia: Double = 1.9
 
     override fun sacar(valor: Double) {
         if (valor <= (saldo - taxaSaque)) {

@@ -1,4 +1,6 @@
-import modelo.ContaPoupanca
+package br.com.bytebank.teste
+
+import br.com.bytebank.modelo.ContaPoupanca
 
 fun testaCopiasEReferencias() {
     val x = 10

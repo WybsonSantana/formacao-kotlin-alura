@@ -1,3 +1,5 @@
+package br.com.bytebank.teste
+
 fun testaLacos() {
     println("Bem-vindo(a) ao ByteBank!\n")
 

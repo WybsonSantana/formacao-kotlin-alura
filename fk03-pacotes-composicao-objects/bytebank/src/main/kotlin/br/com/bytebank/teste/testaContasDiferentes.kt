@@ -1,5 +1,7 @@
-import modelo.ContaCorrente
-import modelo.ContaPoupanca
+package br.com.bytebank.teste
+
+import br.com.bytebank.modelo.ContaCorrente
+import br.com.bytebank.modelo.ContaPoupanca
 
 fun testaContasDiferentes() {
     println("Seja bem-vindo(a) ao ByteBank!\n")

@@ -1,11 +1,13 @@
-import modelo.*
+package br.com.bytebank.teste
+
+import br.com.bytebank.modelo.*
 
 fun testaFuncionarios() {
     println("Seja bem-vindo(a) ao ByteBank!\n")
 
     val auxiliarZotano = Auxiliar(
         nome = "Zotano das Neves",
-        cargo = "modelo.Auxiliar",
+        cargo = "Auxiliar",
         cpf = "479.116.990-54",
         email = "zotanodasneves@bytebank.com.br",
         salario = 2500.0
@@ -20,7 +22,7 @@ fun testaFuncionarios() {
 
     val analistaFulano = Analista(
         nome = "Fulano de Tal",
-        cargo = "modelo.Analista",
+        cargo = "Analista",
         cpf = "123.456.789-09",
         email = "fulanodetal@bytebank.com.br",
         salario = 5000.0
@@ -35,7 +37,7 @@ fun testaFuncionarios() {
 
     val gerenteBeltrano = Gerente(
         nome = "Beltrano da Silva",
-        cargo = "modelo.Gerente",
+        cargo = "Gerente",
         cpf = "930.133.220-55",
         email = "beltranodasilva@bytebank.com.br",
         salario = 10000.0,
@@ -52,7 +54,7 @@ fun testaFuncionarios() {
 
     val diretorCiclano = Diretor(
         nome = "Ciclano do Ramo",
-        cargo = "modelo.Diretor",
+        cargo = "Diretor",
         cpf = "380.157.620-57",
         email = "ciclanodoramo@bytebank.com.br",
         salario = 20000.0,

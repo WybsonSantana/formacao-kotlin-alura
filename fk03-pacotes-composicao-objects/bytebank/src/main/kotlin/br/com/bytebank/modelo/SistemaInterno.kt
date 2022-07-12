@@ -1,4 +1,4 @@
-package modelo
+package br.com.bytebank.modelo
 
 class SistemaInterno {
 

@@ -1,3 +1,5 @@
+package br.com.bytebank.teste
+
 fun testaCondicaoDaConta(saldo: Double) {
     when {
         saldo > 0.0 -> println("Seu saldo está positivo!")

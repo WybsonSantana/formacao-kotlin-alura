@@ -1,10 +1,10 @@
-package modelo
+package br.com.bytebank.modelo
 
 class ContaPoupanca(
     titular: String,
     agencia: String = "0017",
     numeroConta: String,
-    tipoDaConta: String = "modelo.Conta Poupança",
+    tipoDaConta: String = "Conta Poupança",
 ) : Conta(
     titular = titular,
     agencia = agencia,
