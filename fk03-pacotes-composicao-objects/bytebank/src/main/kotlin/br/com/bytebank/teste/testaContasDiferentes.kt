@@ -1,5 +1,6 @@
 package br.com.bytebank.teste
 
+import br.com.bytebank.modelo.Cliente
 import br.com.bytebank.modelo.ContaCorrente
 import br.com.bytebank.modelo.ContaPoupanca
 
@@ -7,13 +8,23 @@ fun testaContasDiferentes() {
     println("Seja bem-vindo(a) ao ByteBank!\n")
 
     val contaCorrente = ContaCorrente(
-        titular = "Fulano de Tal",
-        numeroConta = "1000"
+        numeroConta = "1000",
+        titular = Cliente(
+            nome = "Fulano de Tal",
+            cpf = "123.456.789-09",
+            email = "fulanodetal@bytebank.com.br",
+            senha = 1234
+        )
     )
 
     val contaPoupanca = ContaPoupanca(
-        titular = "Beltrano da Silva",
-        numeroConta = "1001"
+        numeroConta = "1001",
+        titular = Cliente(
+            nome = "Beltrano da Silva",
+            cpf = "930.133.220-55",
+            email = "beltranodasilva@bytebank.com.br",
+            senha = 2749
+        )
     )
 
     contaCorrente.depositar(1000.0)

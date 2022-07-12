@@ -1,6 +1,6 @@
-import br.com.bytebank.teste.testaAutenticacao
+import br.com.bytebank.teste.*
 
 fun main() {
-    testaAutenticacao()
+    testaComportamentosConta()
 
 }

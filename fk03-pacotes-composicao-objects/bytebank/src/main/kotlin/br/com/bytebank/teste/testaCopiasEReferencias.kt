@@ -1,5 +1,6 @@
 package br.com.bytebank.teste
 
+import br.com.bytebank.modelo.Cliente
 import br.com.bytebank.modelo.ContaPoupanca
 
 fun testaCopiasEReferencias() {
@@ -9,16 +10,27 @@ fun testaCopiasEReferencias() {
     println("X = $x\nY = $y")
 
     val contaFulano = ContaPoupanca(
-        titular = "Fulano de Tal",
-        numeroConta = "1000"
-    )
-    val contaBeltrano = ContaPoupanca(
-        titular = "Beltrano da Silva",
-        numeroConta = "1001"
+        numeroConta = "1000",
+        titular = Cliente(
+            nome = "Fulano de Tal",
+            cpf = "123.456.789-09",
+            email = "fulanodetal@bytebank.com.br",
+            senha = 1234
+        )
     )
 
-    println("Titular da conta Fulano: ${contaFulano.titular}")
-    println("Titular da conta Beltrano: ${contaBeltrano.titular}")
+    val contaBeltrano = ContaPoupanca(
+        numeroConta = "1001",
+        titular = Cliente(
+            nome = "Beltrano da Silva",
+            cpf = "930.133.220-55",
+            email = "beltranodasilva@bytebank.com.br",
+            senha = 2749
+        )
+    )
+
+    println("Titular da conta Fulano: ${contaFulano.titular.nome}")
+    println("Titular da conta Beltrano: ${contaBeltrano.titular.nome}")
 
     println(contaFulano)
     println(contaBeltrano)
