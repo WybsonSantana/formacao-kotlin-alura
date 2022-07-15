@@ -1,9 +1,6 @@
 package br.com.bytebank
 
-import br.com.bytebank.modelo.Cliente
-import br.com.bytebank.modelo.ContaCorrente
-import br.com.bytebank.modelo.ContaPoupanca
-import br.com.bytebank.modelo.totalContas
+import br.com.bytebank.modelo.*
 import br.com.bytebank.teste.*
 
 fun main() {
@@ -17,7 +14,7 @@ fun main() {
     )
 
     val contaCorrenteTentano = ContaCorrente(
-numeroConta = "2001",
+        numeroConta = "2001",
         titular = clienteTentano
     )
 
@@ -26,6 +23,21 @@ numeroConta = "2001",
         titular = clienteTentano
     )
 
-    println("\nNúmero de contas criadas: $totalContas")
+    println("\nNúmero de contas criadas: $totalContas\n")
 
+    val kotano = object : Autenticavel {
+        val nome: String = "Kotano Pano"
+        val cpf: String = "305.711.404-08"
+        val email: String = "kotanopano@mail.com.br"
+        val senha: Int = 1326
+
+        override fun autenticar(senha: Int): Boolean = this.senha == senha
+    }
+
+    val sistemaInterno = SistemaInterno()
+    sistemaInterno.logar(kotano, 1326)
+
+    println("Nome do cliente: ${kotano.nome}")
+    println("CPF: ${kotano.cpf}")
+    println("E-mail: ${kotano.email}")
 }
