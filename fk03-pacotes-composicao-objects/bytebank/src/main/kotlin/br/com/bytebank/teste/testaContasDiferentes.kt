@@ -26,24 +26,6 @@ fun testaContasDiferentes() {
         )
     )
 
-    val contaPoupanca = ContaPoupanca(
-        numeroConta = "1001",
-        titular = Cliente(
-            nome = "Beltrano da Silva",
-            cpf = "930.133.220-55",
-            email = "beltranodasilva@bytebank.com.br",
-            senha = 2749,
-            endereco = Endereco(
-                logradouro = "Rua Nossa Senhora do Carmo",
-                numero = "800",
-                bairro = "Fragoso",
-                cidade = "Olinda",
-                estado = "PE",
-                cep = "53060-486"
-            )
-        )
-    )
-
     println(
         """
         Dados da conta:
@@ -65,6 +47,24 @@ fun testaContasDiferentes() {
         CEP: ${contaCorrente.titular.endereco.cep}
         
     """.trimIndent()
+    )
+
+    val contaPoupanca = ContaPoupanca(
+        numeroConta = "1001",
+        titular = Cliente(
+            nome = "Beltrano da Silva",
+            cpf = "930.133.220-55",
+            email = "beltranodasilva@bytebank.com.br",
+            senha = 2749,
+            endereco = Endereco(
+                logradouro = "Rua Nossa Senhora do Carmo",
+                numero = "800",
+                bairro = "Fragoso",
+                cidade = "Olinda",
+                estado = "PE",
+                cep = "53060-486"
+            )
+        )
     )
 
     println("""

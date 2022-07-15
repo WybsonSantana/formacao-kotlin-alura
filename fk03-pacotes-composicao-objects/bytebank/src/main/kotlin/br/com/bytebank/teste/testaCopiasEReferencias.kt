@@ -7,7 +7,7 @@ fun testaCopiasEReferencias() {
     val x = 10
     var y = x
     y++
-    println("X = $x\nY = $y")
+    println("X = $x\nY = $y\n")
 
     val contaFulano = ContaPoupanca(
         numeroConta = "1000",
@@ -19,6 +19,8 @@ fun testaCopiasEReferencias() {
         )
     )
 
+    println("Titular da conta Fulano: ${contaFulano.titular.nome}\n")
+
     val contaBeltrano = ContaPoupanca(
         numeroConta = "1001",
         titular = Cliente(
@@ -29,8 +31,7 @@ fun testaCopiasEReferencias() {
         )
     )
 
-    println("Titular da conta Fulano: ${contaFulano.titular.nome}")
-    println("Titular da conta Beltrano: ${contaBeltrano.titular.nome}")
+    println("Titular da conta Beltrano: ${contaBeltrano.titular.nome}\n")
 
     println(contaFulano)
     println(contaBeltrano)
