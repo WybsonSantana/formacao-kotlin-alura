@@ -23,7 +23,7 @@ fun main() {
         titular = clienteTentano
     )
 
-    println("\nNúmero de contas criadas: $totalContas\n")
+    println("\nNúmero de contas criadas: ${Conta.Contador.total}\n")
 
     val kotano = object : Autenticavel {
         val nome: String = "Kotano Pano"

@@ -3,9 +3,6 @@ package br.com.bytebank.modelo
 import java.text.SimpleDateFormat
 import java.util.*
 
-var totalContas = 0
-    private set
-
 abstract class Conta(
     val titular: Cliente,
     val agencia: String = "0017",
@@ -17,8 +14,14 @@ abstract class Conta(
         protected set
     val horarioTransacao = SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(Date())
 
+    companion object Contador {
+        var total = 0
+            private set
+    }
+
     init {
         println("Criando uma conta do tipo ${this.tipoDaConta}...")
+        total++
     }
 
     fun depositar(valor: Double) {
@@ -61,10 +64,6 @@ class ContaCorrente(
 
     private val taxaSaque: Double = 0.1
     private val taxaTransferencia: Double = 1.9
-
-    init {
-        totalContas++
-    }
 
     override fun sacar(valor: Double) {
         if (valor <= (saldo - taxaSaque)) {
@@ -119,10 +118,6 @@ class ContaPoupanca(
     numeroConta = numeroConta,
     tipoDaConta = tipoDaConta,
 ) {
-
-    init {
-       totalContas++
-    }
 
     override fun sacar(valor: Double) {
         if (valor <= saldo) {
