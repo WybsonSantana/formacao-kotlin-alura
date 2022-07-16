@@ -10,7 +10,11 @@ fun main() {
 
 fun funcao1() {
     println("Início funcao1()")
-    funcao2()
+    try {
+        funcao2()
+    } catch (ex: ClassCastException) {
+        println("ClassCastException capturada")
+    }
     println("Fim funcao1()")
 }
 
