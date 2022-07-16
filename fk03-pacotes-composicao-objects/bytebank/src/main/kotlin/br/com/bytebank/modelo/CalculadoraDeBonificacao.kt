@@ -4,8 +4,7 @@ class CalculadoraDeBonificacao {
     var total: Double = 0.0
         private set
 
-    fun registra(funcionario: Any) {
-        funcionario as Funcionario
+    fun registra(funcionario: Funcionario) {
         this.total += funcionario.bonificacao()
     }
 }

@@ -8,4 +8,18 @@ class Endereco(
     var cidade: String = "",
     var estado: String = "",
     var cep: String = ""
-)
+) {
+
+    override fun toString() = """
+        Logradouro: $logradouro
+        Complemento: $complemento
+        Número: $numero
+        Bairro: $bairro
+        Cidade: $cidade
+        Estado: $estado
+        CEP: $cep
+        
+    """.trimIndent()
+
+
+}
