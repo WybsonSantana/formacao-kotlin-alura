@@ -31,6 +31,19 @@ fun main() {
     println(endereco1)
     println(endereco2)
 
-println("${endereco1::class.java}@${Integer.toHexString(endereco1.hashCode())}")
-println("${endereco2::class.java}@${Integer.toHexString(endereco2.hashCode())}")
+    println("${endereco1::class.java}@${Integer.toHexString(endereco1.hashCode())}")
+    println("${endereco2::class.java}@${Integer.toHexString(endereco2.hashCode())}")
+
+    val endereco3 = Endereco(
+        logradouro = "Rua 1",
+        cep = "00000-500"
+    )
+
+    val endereco4 = Endereco(
+        logradouro = "Rua 2",
+        cep = "00000-500"
+    )
+
+    println()
+    println(endereco3.equals(endereco4))
 }
