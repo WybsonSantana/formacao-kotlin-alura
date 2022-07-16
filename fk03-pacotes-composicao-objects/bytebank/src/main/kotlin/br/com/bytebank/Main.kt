@@ -1,8 +1,5 @@
 package br.com.bytebank
 
-import br.com.bytebank.modelo.Cliente
-import br.com.bytebank.modelo.Endereco
-
 fun main() {
     println()
     println(17)
@@ -10,4 +7,13 @@ fun main() {
     println(true)
     println("Kotlin")
     println('K')
+
+    imprimir("")
+    imprimir(17)
+    imprimir(1.6)
+    imprimir(true)
+    imprimir("Kotlin")
+    imprimir('K')
 }
+
+fun imprimir(any: Any) = println(any)
