@@ -13,6 +13,7 @@ fun funcao1() {
     try {
         funcao2()
     } catch (ex: ClassCastException) {
+        ex.printStackTrace()
         println("ClassCastException capturada")
     }
     println("Fim funcao1()")
