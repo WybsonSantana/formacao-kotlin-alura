@@ -1,10 +1,11 @@
 package br.com.bytebank
 
 import br.com.bytebank.modelo.Endereco
+import br.com.bytebank.teste.testaComportamentosConta
 import br.com.bytebank.teste.testaContasDiferentes
 
 fun main() {
-    testaContasDiferentes()
+    testaComportamentosConta()
     println("Início main()")
     funcao1()
     println("Fim main()")

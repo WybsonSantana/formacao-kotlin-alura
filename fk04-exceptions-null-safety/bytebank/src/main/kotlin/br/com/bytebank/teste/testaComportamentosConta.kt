@@ -1,5 +1,6 @@
 package br.com.bytebank.teste
 
+import br.com.bytebank.exception.SaldoInsuficienteException
 import br.com.bytebank.modelo.Cliente
 import br.com.bytebank.modelo.ContaCorrente
 import br.com.bytebank.modelo.ContaPoupanca
@@ -32,9 +33,31 @@ fun testaComportamentosConta() {
     contaFulano.depositar(-250.0)
     contaBeltrano.depositar(400.0)
 
-    contaFulano.sacar(300.0)
-    contaBeltrano.sacar(700.0)
+    try {
+        contaFulano.sacar(50.0)
+    } catch (ex: SaldoInsuficienteException) {
+        println("Falha no saque: saldo insuficiente!\n")
+        ex.printStackTrace()
+    }
 
-    contaFulano.transferir(150.0, contaBeltrano)
-    contaBeltrano.transferir(450.0, contaFulano)
+    try {
+        contaBeltrano.sacar(700.0)
+    } catch (ex: SaldoInsuficienteException) {
+        println("Falha no saque: saldo insuficiente!\n")
+        ex.printStackTrace()
+    }
+
+    try {
+        contaFulano.transferir(150.0, contaBeltrano)
+    } catch (ex: SaldoInsuficienteException) {
+        println("Falha na transferência: saldo insuficiente!")
+        ex.printStackTrace()
+    }
+
+    try {
+        contaBeltrano.transferir(450.0, contaFulano)
+    } catch (ex: SaldoInsuficienteException) {
+        println("Falha na transferência: saldo insuficiente!")
+        ex.printStackTrace()
+    }
 }

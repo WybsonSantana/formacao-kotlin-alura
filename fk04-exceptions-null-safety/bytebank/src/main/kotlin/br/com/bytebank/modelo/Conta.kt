@@ -82,7 +82,7 @@ class ContaCorrente(
             println("Saldo: R$ %.2f\n".format(this.saldo))
         } else {
             println("Sacando R$ %.2f na conta de ${this.titular.nome}".format(valor))
-            println("Saldo insuficiente!\n")
+            throw SaldoInsuficienteException()
         }
     }
 
@@ -133,7 +133,7 @@ class ContaPoupanca(
             println("Saldo: R$ %.2f\n".format(this.saldo))
         } else {
             println("Sacando R$ %.2f na conta de ${this.titular.nome}".format(valor))
-            println("Saldo insuficiente!\n")
+            throw SaldoInsuficienteException()
         }
     }
 
