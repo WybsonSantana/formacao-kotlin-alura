@@ -1,5 +1,6 @@
 package br.com.bytebank.teste
 
+import br.com.bytebank.exception.SaldoInsuficienteException
 import br.com.bytebank.modelo.Cliente
 import br.com.bytebank.modelo.ContaCorrente
 import br.com.bytebank.modelo.ContaPoupanca
@@ -67,7 +68,8 @@ fun testaContasDiferentes() {
         )
     )
 
-    println("""
+    println(
+        """
         Dados da conta:
         
         Agência: ${contaPoupanca.agencia}
@@ -86,14 +88,25 @@ fun testaContasDiferentes() {
         Estado: ${contaPoupanca.titular.endereco.estado}
         CEP: ${contaPoupanca.titular.endereco.cep}
         
-    """.trimIndent())
+    """.trimIndent()
+    )
 
     contaCorrente.depositar(1000.0)
     contaPoupanca.depositar(1000.0)
 
     contaCorrente.sacar(100.0)
     contaPoupanca.sacar(100.0)
+    try {
+        contaCorrente.transferir(99.0, contaPoupanca)
+    } catch (ex: SaldoInsuficienteException) {
+        println("Falha na transferência: saldo insuficeente!\n")
+        ex.printStackTrace()
+    }
 
-    contaCorrente.transferir(99.0, contaPoupanca)
-    contaPoupanca.transferir(1000.0, contaCorrente)
+    try {
+        contaPoupanca.transferir(1000.0, contaCorrente)
+    } catch (ex: SaldoInsuficienteException) {
+        println("Falha na transferência: saldo insuficiente!\n")
+        ex.printStackTrace()
+    }
 }

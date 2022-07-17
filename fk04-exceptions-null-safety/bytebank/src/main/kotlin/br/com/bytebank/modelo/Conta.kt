@@ -1,5 +1,6 @@
 package br.com.bytebank.modelo
 
+import br.com.bytebank.exception.SaldoInsuficienteException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -102,7 +103,7 @@ class ContaCorrente(
             println("Saldo: R$ %.2f\n".format(this.saldo))
         } else {
             println("Transferindo %.2f da conta de ${this.titular.nome} para ${destino.titular.nome}".format(valor))
-            println("Falha na transferência!\n")
+            throw SaldoInsuficienteException()
         }
     }
 }
@@ -150,7 +151,7 @@ class ContaPoupanca(
             println("Saldo: R$ %.2f\n".format(this.saldo))
         } else {
             println("Transferindo %.2f da conta de ${this.titular.nome} para ${destino.titular.nome}".format(valor))
-            println("Falha na transferência!\n")
+            throw SaldoInsuficienteException()
         }
     }
 
