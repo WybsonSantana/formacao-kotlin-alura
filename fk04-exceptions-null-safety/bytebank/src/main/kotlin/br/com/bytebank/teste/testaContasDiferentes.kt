@@ -95,8 +95,25 @@ fun testaContasDiferentes() {
     contaCorrente.depositar(1000.0)
     contaPoupanca.depositar(1000.0)
 
-    contaCorrente.sacar(100.0)
-    contaPoupanca.sacar(100.0)
+    try {
+        contaCorrente.sacar(100.0, 1234)
+    } catch (ex: SaldoInsuficienteException) {
+        println("Falha no saque: saldo insuficeente!\n")
+        ex.printStackTrace()
+    } catch (ex: FalhaAutenticacaoException) {
+        println("Falha de Autenticação!\n")
+        ex.printStackTrace()
+    }
+
+    try {
+        contaPoupanca.sacar(100.0, 2740)
+    } catch (ex: SaldoInsuficienteException) {
+        println("Falha no saque: saldo insuficeente!\n")
+        ex.printStackTrace()
+    } catch (ex: FalhaAutenticacaoException) {
+        println("Falha de Autenticação!\n")
+        ex.printStackTrace()
+    }
 
     try {
         contaCorrente.transferir(99.0, contaPoupanca, 1235)

@@ -31,9 +31,10 @@ abstract class Conta(
     }
 
     fun depositar(valor: Double) {
+        println("Depositando R$ %.2f na conta de ${this.titular.nome}".format(valor))
+
         if (valor > 0) {
             this.saldo += valor
-            println("Depositando R$ %.2f na conta de ${this.titular.nome}".format(valor))
             println("Depósito realizado com sucesso!")
             println("Titular: ${this.titular.nome}")
             println("Agência: ${this.agencia} | Número da conta: ${this.numeroConta}")
@@ -42,12 +43,11 @@ abstract class Conta(
             println("Horário do depósito: ${this.horarioTransacao}")
             println("Saldo: R$ %.2f\n".format(this.saldo))
         } else {
-            println("Depositando R$ %.2f na conta de ${this.titular.nome}".format(valor))
             println("Desculpe! Algo deu errado e não conseguimos processar o seu depósito.\n")
         }
     }
 
-    abstract fun sacar(valor: Double)
+    abstract fun sacar(valor: Double, senha: Int)
 
     abstract fun transferir(valor: Double, destino: Conta, senha: Int)
 
@@ -71,10 +71,15 @@ class ContaCorrente(
     private val taxaSaque: Double = 0.1
     private val taxaTransferencia: Double = 1.9
 
-    override fun sacar(valor: Double) {
+    override fun sacar(valor: Double, senha: Int) {
+        println("Sacando R$ %.2f na conta de ${this.titular.nome}".format(valor))
+
+        if (!autenticar(senha)) {
+            throw FalhaAutenticacaoException()
+        }
+
         if (valor <= (saldo - taxaSaque)) {
             this.saldo = saldo - valor - taxaSaque
-            println("Sacando R$ %.2f na conta de ${this.titular.nome}".format(valor))
             println("Saque realizado com sucesso!")
             println("Titular: ${this.titular.nome}")
             println("Agência: ${this.agencia} | Número da conta: ${this.numeroConta}")
@@ -86,7 +91,6 @@ class ContaCorrente(
             println("Horário do saque: ${this.horarioTransacao}")
             println("Saldo: R$ %.2f\n".format(this.saldo))
         } else {
-            println("Sacando R$ %.2f na conta de ${this.titular.nome}".format(valor))
             throw SaldoInsuficienteException(
                 mensagem = "Saldo insuficiente para saque\nValor a ser sacado: R$ %.2f\nSaldo atual: R$ %.2f".format(
                     valor,
@@ -98,6 +102,7 @@ class ContaCorrente(
 
     override fun transferir(valor: Double, destino: Conta, senha: Int) {
         println("Transferindo %.2f da conta de ${this.titular.nome} para ${destino.titular.nome}".format(valor))
+
         if (!autenticar(senha)) {
             throw FalhaAutenticacaoException()
         }
@@ -138,10 +143,15 @@ class ContaPoupanca(
     tipoDaConta = tipoDaConta,
 ) {
 
-    override fun sacar(valor: Double) {
+    override fun sacar(valor: Double, senha: Int) {
+        println("Sacando R$ %.2f na conta de ${this.titular.nome}".format(valor))
+
+        if (!autenticar(senha)) {
+            throw FalhaAutenticacaoException()
+        }
+
         if (valor <= saldo) {
             this.saldo -= valor
-            println("Sacando R$ %.2f na conta de ${this.titular.nome}".format(valor))
             println("Saque realizado com sucesso!")
             println("Titular: ${this.titular.nome}")
             println("Agência: ${this.agencia} | Número da conta: ${this.numeroConta}")
@@ -150,7 +160,6 @@ class ContaPoupanca(
             println("Horário do saque: ${this.horarioTransacao}")
             println("Saldo: R$ %.2f\n".format(this.saldo))
         } else {
-            println("Sacando R$ %.2f na conta de ${this.titular.nome}".format(valor))
             throw SaldoInsuficienteException(
                 mensagem = "Saldo insuficiente para saque\nValor a ser sacado: R$ %.2f\nSaldo atual: R$ %.2f".format(
                     valor,
@@ -162,6 +171,7 @@ class ContaPoupanca(
 
     override fun transferir(valor: Double, destino: Conta, senha: Int) {
         println("Transferindo %.2f da conta de ${this.titular.nome} para ${destino.titular.nome}".format(valor))
+
         if (!autenticar(senha)) {
             throw FalhaAutenticacaoException()
         }

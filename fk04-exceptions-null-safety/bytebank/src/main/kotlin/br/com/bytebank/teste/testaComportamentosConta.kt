@@ -35,16 +35,22 @@ fun testaComportamentosConta() {
     contaBeltrano.depositar(400.0)
 
     try {
-        contaFulano.sacar(50.0)
+        contaFulano.sacar(50.0, 1234)
     } catch (ex: SaldoInsuficienteException) {
         println("Falha no saque: saldo insuficiente!\n")
+        ex.printStackTrace()
+    } catch (ex: FalhaAutenticacaoException) {
+        println("Falha de autenticação!\n")
         ex.printStackTrace()
     }
 
     try {
-        contaBeltrano.sacar(700.0)
+        contaBeltrano.sacar(700.0, 2749)
     } catch (ex: SaldoInsuficienteException) {
         println("Falha no saque: saldo insuficiente!\n")
+        ex.printStackTrace()
+    } catch (ex: FalhaAutenticacaoException) {
+        println("Falha de autenticação!\n")
         ex.printStackTrace()
     }
 
