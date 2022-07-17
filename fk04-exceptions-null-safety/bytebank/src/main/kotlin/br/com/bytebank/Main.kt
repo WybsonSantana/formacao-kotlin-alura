@@ -1,31 +1,10 @@
 package br.com.bytebank
 
 import br.com.bytebank.modelo.Endereco
+import br.com.bytebank.teste.testaContasDiferentes
 
 fun main() {
     println("Início main()")
-    val entrada: String = "1.0"
-
-    val valorRecebido: Double? = try {
-        entrada.toDouble()
-    } catch (ex: NumberFormatException) {
-        println("Problema ao converter a entrada")
-        ex.printStackTrace()
-        null
-    }
-
-    val valorComTaxa: Double? = if (valorRecebido != null) {
-        valorRecebido + 0.1
-    } else {
-        null
-    }
-
-    if (valorComTaxa != null) {
-        println("Valor recebido: $valorComTaxa")
-    } else {
-        println("Valor inválido")
-    }
-
     funcao1()
     println("Fim main()")
 }
@@ -47,6 +26,7 @@ fun funcao2() {
         println(i)
         val endereco = Any()
         endereco as Endereco
+        throw ClassCastException()
     }
     println("Fim funcao2()")
 }
