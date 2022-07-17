@@ -42,6 +42,9 @@ fun testaComportamentosConta() {
     } catch (ex: FalhaAutenticacaoException) {
         println("Falha de autenticação!\n")
         ex.printStackTrace()
+    } catch (ex: Exception) {
+        println("Ops! Algo deu errado.\n")
+        ex.printStackTrace()
     }
 
     try {
@@ -51,6 +54,9 @@ fun testaComportamentosConta() {
         ex.printStackTrace()
     } catch (ex: FalhaAutenticacaoException) {
         println("Falha de autenticação!\n")
+        ex.printStackTrace()
+    } catch (ex: Exception) {
+        println("Ops! Algo deu errado.\n")
         ex.printStackTrace()
     }
 
@@ -62,6 +68,9 @@ fun testaComportamentosConta() {
     } catch (ex: FalhaAutenticacaoException) {
         println("Falha de autenticação!\n")
         ex.printStackTrace()
+    } catch (ex: Exception) {
+        println("Ops! Algo deu errado.\n")
+        ex.printStackTrace()
     }
 
     try {
@@ -71,6 +80,9 @@ fun testaComportamentosConta() {
         ex.printStackTrace()
     } catch (ex: FalhaAutenticacaoException) {
         println("Falha de autenticação!\n")
+        ex.printStackTrace()
+    } catch (ex: Exception) {
+        println("Ops! Algo deu errado.\n")
         ex.printStackTrace()
     }
 }

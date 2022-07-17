@@ -170,7 +170,7 @@ class ContaPoupanca(
     }
 
     override fun transferir(valor: Double, destino: Conta, senha: Int) {
-        println("Transferindo %.2f da conta de ${this.titular.nome} para ${destino.titular.nome}".format(valor))
+        println("Transferindo R$ %.2f da conta de ${this.titular.nome} para ${destino.titular.nome}".format(valor))
 
         if (!autenticar(senha)) {
             throw FalhaAutenticacaoException()

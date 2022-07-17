@@ -4,7 +4,7 @@ import br.com.bytebank.modelo.Endereco
 import br.com.bytebank.teste.*
 
 fun main() {
-    testaContasDiferentes()
+    testaComportamentosConta()
     println("Início main()")
     funcao1()
     println("Fim main()")
