@@ -3,8 +3,10 @@ package br.com.bytebank
 import br.com.bytebank.modelo.Endereco
 
 fun main() {
-    var enderecoNulo: Endereco? = null
-    val enderecoNaoNulo: Endereco = enderecoNulo!!
+    var endereco: Endereco? = Endereco(logradouro = "Rua 1")
+    val logradouroNovo: String? = endereco?.logradouro
 
-    enderecoNaoNulo.logradouro
+    endereco?.let {
+        println(it.logradouro.length)
+    }
 }
