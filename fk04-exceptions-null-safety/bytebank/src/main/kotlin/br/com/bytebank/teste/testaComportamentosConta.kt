@@ -1,5 +1,6 @@
 package br.com.bytebank.teste
 
+import br.com.bytebank.exception.FalhaAutenticacaoException
 import br.com.bytebank.exception.SaldoInsuficienteException
 import br.com.bytebank.modelo.Cliente
 import br.com.bytebank.modelo.ContaCorrente
@@ -48,16 +49,22 @@ fun testaComportamentosConta() {
     }
 
     try {
-        contaFulano.transferir(150.0, contaBeltrano)
+        contaFulano.transferir(150.0, contaBeltrano, 1234)
     } catch (ex: SaldoInsuficienteException) {
         println("Falha na transferência: saldo insuficiente!")
+        ex.printStackTrace()
+    } catch (ex: FalhaAutenticacaoException) {
+        println("Falha de autenticação!\n")
         ex.printStackTrace()
     }
 
     try {
-        contaBeltrano.transferir(450.0, contaFulano)
+        contaBeltrano.transferir(450.0, contaFulano, 27499)
     } catch (ex: SaldoInsuficienteException) {
         println("Falha na transferência: saldo insuficiente!")
+        ex.printStackTrace()
+    } catch (ex: FalhaAutenticacaoException) {
+        println("Falha de autenticação!\n")
         ex.printStackTrace()
     }
 }

@@ -1,5 +1,6 @@
 package br.com.bytebank.modelo
 
+import br.com.bytebank.exception.FalhaAutenticacaoException
 import br.com.bytebank.exception.SaldoInsuficienteException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -9,7 +10,7 @@ abstract class Conta(
     val agencia: String = "0017",
     val numeroConta: String,
     val tipoDaConta: String = "Conta",
-) {
+) : Autenticavel {
 
     var saldo = 0.0
         protected set
@@ -23,6 +24,10 @@ abstract class Conta(
     init {
         println("Criando uma conta do tipo ${this.tipoDaConta}...")
         total++
+    }
+
+    override fun autenticar(senha: Int): Boolean {
+        return titular.autenticar(senha)
     }
 
     fun depositar(valor: Double) {
@@ -44,7 +49,7 @@ abstract class Conta(
 
     abstract fun sacar(valor: Double)
 
-    abstract fun transferir(valor: Double, destino: Conta)
+    abstract fun transferir(valor: Double, destino: Conta, senha: Int)
 
     fun receberTransferencia(valor: Double, favorecido: Conta) {
         favorecido.saldo += valor
@@ -82,15 +87,24 @@ class ContaCorrente(
             println("Saldo: R$ %.2f\n".format(this.saldo))
         } else {
             println("Sacando R$ %.2f na conta de ${this.titular.nome}".format(valor))
-            throw SaldoInsuficienteException()
+            throw SaldoInsuficienteException(
+                mensagem = "Saldo insuficiente para saque\nValor a ser sacado: R$ %.2f\nSaldo atual: R$ %.2f".format(
+                    valor,
+                    this.saldo
+                )
+            )
         }
     }
 
-    override fun transferir(valor: Double, destino: Conta) {
+    override fun transferir(valor: Double, destino: Conta, senha: Int) {
+        println("Transferindo %.2f da conta de ${this.titular.nome} para ${destino.titular.nome}".format(valor))
+        if (!autenticar(senha)) {
+            throw FalhaAutenticacaoException()
+        }
+
         if (valor <= (saldo - taxaTransferencia)) {
             this.saldo = saldo - valor - taxaTransferencia
             receberTransferencia(valor, destino)
-            println("Transferindo %.2f da conta de ${this.titular.nome} para ${destino.titular.nome}".format(valor))
             println("Transferência realizada com sucesso!")
             println("Titular: ${this.titular.nome}")
             println("Agência: ${this.agencia} | Número da conta: ${this.numeroConta}")
@@ -102,8 +116,12 @@ class ContaCorrente(
             println("Horário da transferência: ${this.horarioTransacao}")
             println("Saldo: R$ %.2f\n".format(this.saldo))
         } else {
-            println("Transferindo %.2f da conta de ${this.titular.nome} para ${destino.titular.nome}".format(valor))
-            throw SaldoInsuficienteException()
+            throw SaldoInsuficienteException(
+                mensagem = "Saldo insuficiente para transferência\nValor a ser transferido: R$ %.2f\nSaldo atual: R$ %.2f".format(
+                    valor,
+                    this.saldo
+                )
+            )
         }
     }
 }
@@ -133,15 +151,24 @@ class ContaPoupanca(
             println("Saldo: R$ %.2f\n".format(this.saldo))
         } else {
             println("Sacando R$ %.2f na conta de ${this.titular.nome}".format(valor))
-            throw SaldoInsuficienteException()
+            throw SaldoInsuficienteException(
+                mensagem = "Saldo insuficiente para saque\nValor a ser sacado: R$ %.2f\nSaldo atual: R$ %.2f".format(
+                    valor,
+                    this.saldo
+                )
+            )
         }
     }
 
-    override fun transferir(valor: Double, destino: Conta) {
+    override fun transferir(valor: Double, destino: Conta, senha: Int) {
+        println("Transferindo %.2f da conta de ${this.titular.nome} para ${destino.titular.nome}".format(valor))
+        if (!autenticar(senha)) {
+            throw FalhaAutenticacaoException()
+        }
+
         if (valor <= saldo) {
             this.saldo -= valor
             receberTransferencia(valor, destino)
-            println("Transferindo %.2f da conta de ${this.titular.nome} para ${destino.titular.nome}".format(valor))
             println("Transferência realizada com sucesso!")
             println("Titular: ${this.titular.nome}")
             println("Agência: ${this.agencia} | Número da conta: ${this.numeroConta}")
@@ -150,8 +177,12 @@ class ContaPoupanca(
             println("Horário da transferência: ${this.horarioTransacao}")
             println("Saldo: R$ %.2f\n".format(this.saldo))
         } else {
-            println("Transferindo %.2f da conta de ${this.titular.nome} para ${destino.titular.nome}".format(valor))
-            throw SaldoInsuficienteException()
+            throw SaldoInsuficienteException(
+                mensagem = "Saldo insuficiente para transferência\nValor a ser transferido: R$ %.2f\nSaldo atual: R$ %.2f".format(
+                    valor,
+                    this.saldo
+                )
+            )
         }
     }
 
