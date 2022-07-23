@@ -15,7 +15,14 @@ fun main() {
     println("Salários com reajuste: ${salariosComReajuste.contentToString()}")
 
     val gastoInicial = salariosComReajuste.somatoria()
-    println("Gasto inicial: ${gastoInicial}")
+    println("Gasto inicial: $gastoInicial")
+
+    val meses = "6".toBigDecimal()
+    val gastoTotal = salariosComReajuste.fold(gastoInicial) { acumulador, salario ->
+        acumulador.plus(salario.times(meses)).setScale(2, RoundingMode.UP)
+    }
+    
+    println("Gasto total: $gastoTotal")
 }
 
 fun bigDecimalArrayOf(vararg valores: String): Array<BigDecimal> {
