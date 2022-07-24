@@ -37,8 +37,15 @@ fun main() {
         )
     )
 
-    println(livros)
+    livros.exibirLista()
     livros.remove(livro1)
-    println(livros)
+    livros.exibirLista()
 
+}
+
+fun List<Livro>.exibirLista() {
+    val saidaFormatada = this.joinToString(separator = "\n") {
+        "\t• ${it.titulo} de ${it.autor}"
+    }
+    println("#### Lista de Livros ####\n$saidaFormatada\n")
 }
