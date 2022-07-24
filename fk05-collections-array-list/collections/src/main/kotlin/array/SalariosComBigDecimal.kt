@@ -11,7 +11,6 @@ fun main() {
     val salariosComReajuste: Array<BigDecimal> = salarios
         .map { salario -> calculaReajusteSalarial(salario, reajuste) }
         .toTypedArray()
-
     println("Salários com reajuste: ${salariosComReajuste.contentToString()}")
 
     val gastoInicial = salariosComReajuste.somatoria()
@@ -21,26 +20,19 @@ fun main() {
     val gastoTotal = salariosComReajuste.fold(gastoInicial) { acumulador, salario ->
         acumulador.plus(salario.times(meses)).setScale(2, RoundingMode.UP)
     }
-    
     println("Gasto total: $gastoTotal")
-}
 
-fun bigDecimalArrayOf(vararg valores: String): Array<BigDecimal> {
-    return Array<BigDecimal>(valores.size) { i ->
-        valores[i].toBigDecimal()
-    }
-}
+    val mediaMaioresSalarios = salariosComReajuste
+        .sorted()
+        .takeLast(3)
+        .toTypedArray()
+        .media()
+    println("Média entre os 3 maiores salários: $mediaMaioresSalarios")
 
-fun calculaReajusteSalarial(salario: BigDecimal, reajuste: BigDecimal): BigDecimal {
-    return if (salario < "5000.0".toBigDecimal()) {
-        salario + "500".toBigDecimal()
-    } else {
-        salario.plus(salario.times(reajuste)).setScale(2, RoundingMode.UP)
-    }
-}
-
-fun Array<BigDecimal>.somatoria(): BigDecimal {
-    return this.reduce { acumulador, valor ->
-        acumulador + valor
-    }
+    val mediaMenoresSalarios = salariosComReajuste
+        .sorted()
+        .take(3)
+        .toTypedArray()
+        .media()
+    println("Média entre os 3 menores salários: $mediaMenoresSalarios")
 }
