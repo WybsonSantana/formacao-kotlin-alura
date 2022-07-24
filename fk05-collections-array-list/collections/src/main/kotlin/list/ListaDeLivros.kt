@@ -41,11 +41,14 @@ fun main() {
     livros.remove(livro1)
     livros.exibirLista()
 
+    livros.sorted().exibirLista()
+    livros.sortedBy { it.titulo }.exibirLista()
+    livros.sortedBy { it.autor }.exibirLista()
 }
 
 fun List<Livro>.exibirLista() {
     val saidaFormatada = this.joinToString(separator = "\n") {
-        "\t• ${it.titulo} de ${it.autor}"
+        "\t• ${it.anoPublicacao} - ${it.titulo} de ${it.autor}"
     }
     println("#### Lista de Livros ####\n$saidaFormatada\n")
 }
