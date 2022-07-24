@@ -11,7 +11,7 @@ fun main() {
         titulo = "Minha vida de menina",
         autor = "Helena Morley",
         anoPublicacao = "1942",
-        editora = "Editora"
+        editora = "Editora A"
     )
 
     val livro3 = Livro(
@@ -27,7 +27,28 @@ fun main() {
         editora = "Editora B"
     )
 
-    val livros: MutableList<Livro> = mutableListOf(livro1, livro2, livro3, livro4)
+    val livro5 = Livro(
+        titulo = "Vidas Secas",
+        autor = "Graciliano Ramos",
+        anoPublicacao = "1938",
+        editora = "Editora A"
+    )
+
+    val livro6 = Livro(
+        titulo = "Mayombe",
+        autor = "Pepetela",
+        anoPublicacao = "1979",
+        editora = "Editora B"
+    )
+
+    val livro7 = Livro(
+        titulo = "O Cortiço",
+        autor = "Aluísio Azevedo",
+        anoPublicacao = "1890",
+        editora = "Editora B"
+    )
+
+    val livros: MutableList<Livro> = mutableListOf(livro1, livro2, livro3, livro4, livro5, livro6, livro7)
 
     livros.add(
         Livro(
@@ -44,6 +65,11 @@ fun main() {
     livros.sorted().exibirLista()
     livros.sortedBy { it.titulo }.exibirLista()
     livros.sortedBy { it.autor }.exibirLista()
+
+    livros.filter { it.autor.startsWith("J") }
+        .sortedBy { it.anoPublicacao }
+        .map { it.titulo }
+        .let { println(it) }
 }
 
 fun List<Livro>.exibirLista() {
