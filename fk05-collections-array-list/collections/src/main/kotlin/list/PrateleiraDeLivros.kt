@@ -2,16 +2,14 @@ package list
 
 data class PrateleiraDeLivros(
     val genero: String,
-    val livros: MutableList<Livro?>
+    val livros: List<Livro?>
 ) {
 
-    fun organizarPorAutor(): MutableList<Livro?> {
-        this.livros.sortBy { it?.autor }
-        return this.livros
+    fun organizarPorAutor(): List<Livro?> {
+        return this.livros.sortedBy { it?.autor }
     }
 
-    fun organizarPorAnoPublicacao(): MutableList<Livro?> {
-        this.livros.sortBy { it?.anoPublicacao }
-        return this.livros
+    fun organizarPorAnoPublicacao(): List<Livro?> {
+        return this.livros.sortedBy { it?.anoPublicacao }
     }
 }
