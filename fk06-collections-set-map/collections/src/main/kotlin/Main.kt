@@ -1,22 +1,13 @@
 fun main() {
-    val assistiramCursoJava: Set<String> = setOf("Fulano", "Beltrano", "Ciclano")
-    val assistiramCursoKotlin: Set<String> = setOf("Fulano", "Mengano", "Zotano")
+    val pedidos = mapOf(Pair(1, 20.0), Pair(2, 34.0), 3 to 50.0)
+    println(pedidos)
+    val pedido = pedidos[3]
+    pedido.let {
+        println("Valor do pedido: $it")
+    }
 
-    println(assistiramCursoJava + assistiramCursoKotlin)
-    println(assistiramCursoJava.union(assistiramCursoKotlin))
-
-    println(assistiramCursoJava - assistiramCursoKotlin)
-    println(assistiramCursoJava.subtract(assistiramCursoKotlin))
-
-    println(assistiramCursoJava.intersect(assistiramCursoKotlin))
-
-    val assistiramAmbosCursos1: Set<String> = assistiramCursoJava + assistiramCursoKotlin
-    println(assistiramAmbosCursos1)
-
-    val assistiramAmbosCursos2 = mutableSetOf<String>()
-    assistiramAmbosCursos2.addAll(assistiramCursoJava)
-    assistiramAmbosCursos2.addAll(assistiramCursoKotlin)
-    assistiramAmbosCursos2.add("Tentano")
-    assistiramAmbosCursos2.add("Pebano")
-    println(assistiramAmbosCursos2)
+    for (pedido: Map.Entry<Int, Double> in pedidos) {
+        println("Número do pedido: ${pedido.key}")
+        println("Valor do pedido: ${pedido.value}")
+    }
 }
