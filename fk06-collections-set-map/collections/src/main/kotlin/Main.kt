@@ -1,13 +1,15 @@
 fun main() {
     val banco = BancoDeNomes()
+    val nomesSalvos: Collection<String> = banco.nomes
     // banco.nomes.add("Fulano")
     banco.salvar("Fulano")
     println(banco.nomes)
+    println(nomesSalvos)
     println(BancoDeNomes().nomes)
 }
 
 class BancoDeNomes {
-    val nomes: Collection<String> get() = dados
+    val nomes: Collection<String> get() = dados.toList()
 
     fun salvar(nome: String) {
         dados.add(nome)
