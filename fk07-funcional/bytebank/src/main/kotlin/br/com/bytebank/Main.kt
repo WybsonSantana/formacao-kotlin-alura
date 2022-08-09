@@ -1,35 +1,22 @@
 package br.com.bytebank
 
 fun main() {
-    val minhaFuncaoLambda = {
-        println("Executa como lambda")
-    }
-
-    println(minhaFuncaoLambda())
-
-    val minhaFuncaoAnonima: () -> Unit = fun() {
-        println("Executa como anônima")
-    }
-
-    println(minhaFuncaoAnonima())
+    testaTipoFuncaoReferencia()
+    testaTipoFuncaoClasse()
 }
 
 fun testaTipoFuncaoReferencia() {
-    val minhaFuncao = ::teste
-    println(minhaFuncao)
+    val minhaFuncao: (Int, Int) -> Int = ::somar
+    println(minhaFuncao(8, 19))
 }
 
 fun testaTipoFuncaoClasse() {
-    val minhaFuncaoClasse: () -> Unit = Teste()
-    println(minhaFuncaoClasse())
+    val minhaFuncaoClasse: (Int, Int) -> Int = Somar()
+    println(minhaFuncaoClasse(11, 17))
 }
 
-class Teste : () -> Unit {
-    override fun invoke() {
-        println("Executa invoke do teste")
-    }
+class Somar : (Int, Int) -> Int {
+    override fun invoke(x: Int, y: Int): Int = x + y
 }
 
-fun teste() {
-    println("Executa teste")
-}
+fun somar(x: Int, y: Int): Int = x + y
