@@ -3,6 +3,16 @@ package br.com.bytebank
 fun main() {
     testaTipoFuncaoReferencia()
     testaTipoFuncaoClasse()
+
+    val minhaFuncaoLambda = { x: Int, y: Int ->
+        x + y
+    }
+    println(minhaFuncaoLambda(11, 19))
+
+    val minhaFuncaoAnonima = fun(x: Int, y: Int): Int {
+        return x + y
+    }
+    println(minhaFuncaoAnonima(8, 11))
 }
 
 fun testaTipoFuncaoReferencia() {
