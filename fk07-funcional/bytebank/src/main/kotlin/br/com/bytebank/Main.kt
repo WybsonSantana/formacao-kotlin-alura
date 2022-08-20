@@ -9,10 +9,25 @@ fun main() {
     testaRun()
 }
 
+fun testaWith() {
+    with(Endereco()) {
+        logradouro = "Rua sem Saída"
+        complemento = "Apto"
+        numero = "7"
+        bairro = "Recanto da JVM"
+        cidade = "São Paulo"
+        estado = "SP"
+        cep = "01152-229"
+        completo()
+    }.let { enderecoCompleto: String ->
+        println(enderecoCompleto)
+    }
+}
+
 fun testaRun() {
     val taxaAnual = 0.05
     val taxaMensal = taxaAnual / 12
-    println("Taxa mensal: $taxaMensal")
+    println("Taxa mensal: %.2f%%".format(taxaMensal * 100))
     val contaPoupanca = ContaPoupanca(
         Cliente(
             nome = "Fulano de Tal",
@@ -27,7 +42,7 @@ fun testaRun() {
         depositar(1000.0)
         saldo * taxaMensal
     }.let { rendimentoMensal ->
-        println("Rendimento mensal: $rendimentoMensal")
+        println("Rendimento mensal: R$ %.2f".format(rendimentoMensal))
     }
 
     val rendimentoAnual = run {
@@ -37,20 +52,5 @@ fun testaRun() {
         }
         saldo
     }
-    println("Simulação rendimento anual: $rendimentoAnual")
-}
-
-fun testaWith() {
-    with(Endereco()) {
-        logradouro = "Rua sem Saída"
-        complemento = "Apto"
-        numero = "7"
-        bairro = "Recanto da JVM"
-        cidade = "São Paulo"
-        estado = "SP"
-        cep = "01152-229"
-        completo()
-    }.let { enderecoCompleto: String ->
-        println(enderecoCompleto)
-    }
+    println("Simulação rendimento anual: R$ %.2f".format(rendimentoAnual))
 }
