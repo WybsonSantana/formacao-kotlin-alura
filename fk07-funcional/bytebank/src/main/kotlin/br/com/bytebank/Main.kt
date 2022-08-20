@@ -3,10 +3,10 @@ package br.com.bytebank
 import br.com.bytebank.modelo.Cliente
 import br.com.bytebank.modelo.ContaPoupanca
 import br.com.bytebank.modelo.Endereco
+import br.com.bytebank.teste.testaHOF
 
 fun main() {
-    testaWith()
-    testaRun()
+    testaHOF()
 }
 
 fun testaWith() {
