@@ -16,8 +16,8 @@ fun main() {
     val endereco2 = Endereco(
         logradouro = "Rua sem Saída",
         numero = "19"
-    ).let { endereco2 ->
-        "${endereco2.logradouro}, ${endereco2.numero}".uppercase()
+    ).apply {
+        "$logradouro, $numero".uppercase()
     }.let(::println)
 
     listOf<Endereco>(
